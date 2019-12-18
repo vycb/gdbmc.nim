@@ -1,8 +1,8 @@
 # Package
 
-version       = "0.9.0"
+version       = "0.9.1"
 author        = "vycb"
-description   = "This library is a wrapper to C GDBM library."
+description   = "This library is a wrapper to C GDBM one"
 license       = "MIT"
 srcDir        = "src"
 
