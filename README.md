@@ -58,21 +58,21 @@ For ditails see `block test:` in gdbmc.nim
         echo "Use: cat file.txt|deduplicate"
         quit 1
 
-    const filename: string = "/tmp/dedup-nim.db"
-    let
-      db = Open(filename, "n")
-    defer: Close(db)
-    var line = ""
-    while stdin.readLine(line):
-      line = line.strip.replace(re"(\s+)", " ")
-      let md5line = getMD5(line)
-      if md5line notin db:
-        db[md5line] = ""
-        echo line
+      const filename: string = "/tmp/dedup-nim.db"
+      let
+        db = Open(filename, "n")
+      defer: Close(db)
+      var line = ""
+      while stdin.readLine(line):
+        line = line.strip.replace(re"(\s+)", " ")
+        let md5line = getMD5(line)
+        if md5line notin db:
+          db[md5line] = ""
+          echo line
 ```
   
 ### License  
-[MIT License](https://opensource.org/licenses/MIT). You may use any compatible license (essentially any license) for your own programs developed with libgdbm
+[MIT License](https://opensource.org/licenses/MIT). You may use any compatible license (essentially any license) for your own programs developed with gdbmc
 
 
 <!--
