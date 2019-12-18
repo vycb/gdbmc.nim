@@ -1,4 +1,4 @@
-﻿# This library is a wrapper to C GDBM library.  
+﻿# This library is a wrapper to C GDBM one  
 The GNU dbm ('gdbm') is a library of database functions that use extendible hashing and works similarly to the standard UNIX 'dbm' functions.  
   
 ### Instal:  
@@ -9,7 +9,7 @@ The GNU dbm ('gdbm') is a library of database functions that use extendible hash
     sudo apt install libgdbm-dev
   
 ### Usage:  
-  
+```nim
     block test:
       const filename: string = "test.db"
       let
@@ -39,11 +39,12 @@ The GNU dbm ('gdbm') is a library of database functions that use extendible hash
 
       for key in db.keyIterator():
         stdout.writeLine(key)
+```
 
 For ditails see `block test:` in gdbmc.nim  
 
 ### Example: memory efficient deduplication of a file  
-  
+```nim
     import gdbmc
     from system import quit
     from os import getFileInfo
@@ -68,10 +69,12 @@ For ditails see `block test:` in gdbmc.nim
       if md5line notin db:
         db[md5line] = ""
         echo line
-  
+```
   
 ### License  
 [MIT License](https://opensource.org/licenses/MIT). You may use any compatible license (essentially any license) for your own programs developed with libgdbm
 
 
-.. vim:ft=markdown:tabstop=2:expandtab:shiftwidth=2:softtabstop=2:foldmethod=marker:
+<!--
+vim:ft=markdown:tabstop=2:expandtab:shiftwidth=2:softtabstop=2:foldmethod=marker:
+-->
