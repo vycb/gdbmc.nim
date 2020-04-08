@@ -267,7 +267,7 @@ when defined INTALLED_GDBM_LIB:
 
   ## inserts or replaces records in the database #{{{
   ## return tuple[sres:GDBM_STORE_RESULT, lerr:GDBM_ERRORS] #}}}
-  proc update*(db:Database, key :string, value :string, flag: GDBM_STORE_FLAG): (GDBM_STORE_RESULT, GDBM_ERRORS) =
+  proc update*(db:Database, key, value :string, flag: GDBM_STORE_FLAG): (GDBM_STORE_RESULT, GDBM_ERRORS) =
     ## Convert key and value into LIBGDBM's `datum` data structure. See the #{{{{{{
     ## C definition at the top for the implementation of C.mk_datum(string). #}}}
     if db.dbf == nil: return (GDBM_STORE_DPTR_NULL, GDBM_FILE_OPEN_ERROR)
@@ -284,14 +284,14 @@ when defined INTALLED_GDBM_LIB:
   ## Inserts a key-value pair into the database. If the database is opened #{{{
   ## in "r" mode, this will return an error. Also, if the key already exists in
   ## the database, and error will be returned. #}}}
-  proc Insert*(db:Database, key: string, value: string): tuple[sres:GDBM_STORE_RESULT, lerr:GDBM_ERRORS] = update(db, key, value, GDBM_INSERT)
+  proc Insert*(db:Database, key, value: string): tuple[sres:GDBM_STORE_RESULT, lerr:GDBM_ERRORS] = update(db, key, value, GDBM_INSERT)
 
   ## Updates a key-value pair to use a new value, specified by the `value` string {{{
   ## parameter. An error will be returned if the database is opened in "r" mode. }}}
-  proc Replace*(db:Database, key: string, value: string): tuple[sres:GDBM_STORE_RESULT, lerr:GDBM_ERRORS] = update(db, key, value, GDBM_REPLACE)
+  proc Replace*(db:Database, key, value: string): tuple[sres:GDBM_STORE_RESULT, lerr:GDBM_ERRORS] = update(db, key, value, GDBM_REPLACE)
 
   ## Inserts or Updates a key-value pair in the database
-  proc `[]=`*(db:Database, key: string, value: string) =
+  proc `[]=`*(db:Database, key, value: string) =
     let flag = if key in db: GDBM_REPLACE else: GDBM_INSERT #{{{
     discard update(db, key, value, flag) #}}}
 
