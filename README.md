@@ -1,12 +1,15 @@
 ﻿# This library is a wrapper to C GDBM one  
-The GNU dbm ('gdbm') is a library of database functions that use extendible hashing and works similarly to the standard UNIX 'dbm' functions.  
+The GNU dbm ('gdbm') is a library of database functions that use extendable hashing and works similarly to the standard UNIX 'dbm' functions.  
+  
   
 ### Instal:  
-    nimble install gdbmc
+    nimble install gdbmc  
   
   
 ### Requirement:  
-    sudo apt install libgdbm-dev
+    By default **libgdbm.so.*** already installed on most distros.  
+    sudo apt install libgdbm  
+  
   
 ### Usage:  
 ```nim
@@ -43,7 +46,7 @@ The GNU dbm ('gdbm') is a library of database functions that use extendible hash
 
 For ditails see `block test:` in gdbmc.nim  
 
-### Example: memory efficient deduplication of a file  
+### Example: memory efficient deduplication for files  
 ```nim
     import gdbmc
     from system import quit
